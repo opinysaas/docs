@@ -1,5 +1,103 @@
 ---
 title: 'Webhooks'
-description: 'Biblioteca oficial para aplicações React.'
-icon: 'webhook'
+description: 'Receba notificações em tempo real sempre que um novo feedback for coletado.'
 ---
+
+Os Webhooks permitem que a Opiny envie dados automaticamente para os seus sistemas no exato momento em que uma resposta é recebida. Em vez de você consultar a nossa API periodicamente, nós "avisamos" o seu servidor quando algo acontece.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/webhooks.png"
+/>
+
+## Por que usar Webhooks?
+
+* **Automação de Fluxo:** Envie alertas para o Slack ou Discord quando receber um feedback negativo.
+* **Sincronização de CRM ou automação:** Atualize o cadastro do cliente no Salesforce ou HubSpot com a nota do NPS.
+* **E-mail de Follow-up:** Dispare um e-mail automático de agradecimento ou suporte logo após o envio.
+
+## Configurando um Webhook
+
+Para cadastrar um novo endpoint, acesse o painel da Opiny e siga o caminho: **Configurações > Desenvolvedor > Webhooks**.
+
+<Steps>
+  <Step title="Adicionar Novo">
+    Clique no botão **+ Adicionar Webhook**.
+  </Step>
+  <Step title="URL de Destino (Endpoint)">
+    Insira a URL completa do seu servidor que receberá as requisições (ex: `https://seu-sistema.com/api/webhooks/opiny`).
+  </Step>
+  <Step title="Chave Secreta (Secret)">
+    O sistema gerará uma chave secreta. Guarde-a para validar a autenticidade das mensagens enviadas pela Opiny.
+  </Step>
+</Steps>
+
+## Estrutura do Payload (JSON)
+
+As requisições enviadas pela Opiny são do tipo `POST` com um corpo em formato JSON.
+
+```json JSON
+{
+  "event": "response.created",
+  "created_at": "2026-01-20T23:56:00Z",
+  "data": {
+    "id": "res_12345",
+    "survey_id": "cmjt5c5d00003jr0wngf8kjga",
+    "sentiment": "POSITIVE",
+    "sentiment_score": 92,
+    "answers": [
+      {
+        "questionId": "q_01",
+        "label": "Qual sua nota para o nosso serviço?",
+        "value": "10"
+      },
+      {
+        "questionId": "q_02",
+        "label": "O que podemos melhorar?",
+        "value": "O atendimento foi excelente!"
+      }
+    ],
+    "metadata": {
+      "user_id": "99",
+      "plan": "pro"
+    }
+  }
+}
+```
+
+## Segurança e Verificação
+Para garantir que a requisição foi realmente enviada pela Opiny, incluímos um cabeçalho de assinatura em todas as mensagens:
+
+```bash
+X-Opiny-Signature: sha256=hash_gerado
+```
+
+### Validando a Assinatura
+No seu servidor, você deve calcular o HMAC SHA256 do corpo da requisição bruta usando sua Chave Secreta e comparar com o valor do cabeçalho.
+
+
+```javascript JavaScript
+const crypto = require('crypto');
+
+const secret = 'sua_chave_secreta_webhook';
+const signature = req.headers['x-opiny-signature'];
+const payload = JSON.stringify(req.body);
+
+const expectedSignature = crypto
+  .createHmac('sha256', secret)
+  .update(payload)
+  .digest('hex');
+
+if (`sha256=${expectedSignature}` === signature) {
+  // Requisição legítima
+}
+```
+
+## Melhores Práticas
+- Status 200 OK: Seu servidor deve responder com um status HTTP 200 ou 204 rapidamente. Se a resposta demorar mais de 10 segundos, consideraremos como falha.
+
+- Retentativas (Retries): Caso seu servidor falhe, a Opiny tentará reenviar o webhook até 5 vezes com um intervalo crescente (backoff exponencial).
+
+- Idempotência: Como webhooks podem ser reenviados em caso de falha na rede, certifique-se de que seu sistema consegue lidar com o recebimento do mesmo id de resposta mais de uma vez.
+
+<Warning> Se o seu endpoint falhar consecutivamente por mais de 24 horas, o Webhook será desativado automaticamente e você precisará reativá-lo manualmente no painel. </Warning>
