@@ -1,0 +1,90 @@
+---
+title: 'Visão geral das pesquisas'
+description: 'Saiba como gerenciar sua lista de pesquisas e explorar os resultados detalhados.'
+---
+
+A seção de **Pesquisas** é o coração da plataforma Opiny. Aqui você tem controle total sobre os formulários criados, o status de cada widget e o acesso aos dados coletados.
+
+## Listagem de Pesquisas
+
+Ao clicar em "Pesquisas" no menu lateral, você verá todos os seus formulários organizados em cards.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/pesquisas.png"
+/>
+
+### Informações na Lista
+
+Cada item na lista apresenta métricas rápidas para você acompanhar o desempenho sem precisar entrar nos detalhes:
+
+* **Status:** Indica se a pesquisa está **Ativa** (visível no site), **Rascunho** (em edição), **Pausada** ou **Arquivada**.
+* **Views:** Total de vezes que o widget foi carregado para os usuários.
+* **Respostas:** Quantidade de feedbacks coletados.
+* **Score IA:** A nota média de sentimento calculada pela nossa inteligência artificial.
+* **Atividade:** Há quanto tempo o último feedback foi recebido.
+
+## Detalhes da Pesquisa
+
+Ao selecionar uma pesquisa específica, você entra na visão detalhada, que é dividida em três abas principais:
+
+### 1. Visão Geral (Analytics)
+
+Nesta aba, você encontra o resumo estatístico e a Análise Inteligente.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/detalhe-pesquisa.png"
+/>
+
+* **Métricas de Funil:** Visualizações vs. Respostas e a Taxa de Conversão.
+* **Análise de IA:** Um resumo executivo gerado automaticamente que interpreta o "tom" geral dos seus clientes e lista os tópicos mais comentados (ex: "Elogios à entrega", "Reclamações sobre preço").
+* **NPS ou Satisfação:** Notas baseadas no tipo de pergunta (Net Promoter Score ou Estrelas).
+
+### 2. Respostas Individuais
+
+Aqui você pode auditar cada feedback recebido em ordem cronológica.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/respostas-full.png"
+/>
+
+**Ver Detalhes:** Ao clicar em uma resposta, você vê os metadados técnicos (navegador, localização, página de origem) e os metadados personalizados que você enviou via SDK.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/detalhe-resposta.png"
+/>
+
+### 3. Instalação e Configuração
+
+O local onde você obtém o código para embutir no seu site.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/instalacao-padrao.png"
+/>
+
+* **Snippet de Código:** O script pronto para copiar e colar.
+* **Configuração de Metadados:** Exemplos de como identificar seus usuários logados para que o nome e e-mail deles apareçam nos resultados.
+
+## Ações Rápidas
+
+No menu de cada pesquisa, você pode realizar ações de gerenciamento (Configurações):
+
+<CardGroup cols={3}>
+  <Card title="Editar Estrutura" icon="pen-to-square">
+    Mudar perguntas, cores ou comportamentos do widget.
+  </Card>
+  <Card title="Pausar Coleta" icon="pause">
+    Interromper a exibição no site sem excluir os dados já coletados.
+  </Card>
+  <Card title="Excluir Definitivamente" icon="trash">
+    Remove a pesquisa e todos os dados associados permanentemente.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Use o campo de **Busca** no topo da listagem para encontrar rapidamente pesquisas específicas em contas/organizações com grandes volumes de formulários.
+</Tip>

@@ -1,0 +1,62 @@
+---
+title: 'Script HTML'
+description: 'A maneira mais simples de integrar a Opiny em qualquer site.'
+icon: 'code'
+---
+
+Se você não utiliza frameworks como React ou plataformas como WordPress, pode integrar o widget da Opiny diretamente no seu HTML usando uma tag `<script>`.
+
+## Instalação básica
+
+Copie e cole o código abaixo antes do fechamento da tag `</body>` no seu arquivo HTML.
+
+<CodeGroup>
+```html HTML
+<script>
+  (function() {
+    var s = document.createElement('script');
+    s.src = "https:/opiny.com.br/sdk/opiny.js";
+    s.onload = function() { 
+      window.Opiny.init({ surveyId: "SEU_ID_DA_PESQUISA" }); 
+    };
+    document.head.appendChild(s);
+  })();
+</script>
+```
+</CodeGroup>
+
+## Passando Metadados
+
+Você pode identificar o usuário ou enviar informações contextuais (como o plano do cliente ou ID interno) através do objeto metadata.
+
+<CodeGroup>
+```html HTML
+<script>
+  (function() {
+    var s = document.createElement('script');
+    s.src = "https:/opiny.com.br/sdk/opiny.js";
+    s.onload = function() { 
+      window.Opiny.init({ 
+        surveyId: "SEU_ID_DA_PESQUISA",
+        metadata: {
+          userId: "12345", 
+          plan: "pro",     
+          name: "João"     
+        }
+      }); 
+    };
+    document.head.appendChild(s);
+  })();
+</script>
+```
+</CodeGroup>
+
+## Considerações técnicas
+
+### Carregamento Assíncrono
+O script é carregado com o atributo async, o que garante que ele não bloqueie a renderização inicial do seu site. O widget só aparecerá após o carregamento completo do SDK.
+
+### Localização do ID
+O surveyId pode ser encontrado no painel administrativo da Opiny, dentro das configurações da pesquisa desejada ou na aba de Instalação.
+
+<Tip> Certifique-se de que a sua pesquisa está configurada como Ativa no painel da Opiny para que o widget fique visível para os usuários. </Tip>

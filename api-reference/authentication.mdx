@@ -1,0 +1,23 @@
+---
+title: 'Autenticação'
+description: 'Como autenticar suas requisições.'
+---
+
+A API da Opiny utiliza Bearer Tokens para autenticação. Você deve obter sua chave de API (API Key) no painel da sua organização no menu de [Configurações > Desenvolvedor](https://app.opiny.com.br/dashboard/settings).
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/api-key.png"
+/>
+
+## Cabeçalho de Autorização
+
+Inclua o cabeçalho Authorization em todas as suas requisições:
+
+```bash
+Authorization: Bearer op_live_...
+```
+
+<Warning>
+Suas chaves de API conferem muitos privilégios, portanto, mantenha-as seguras! Não compartilhe suas chaves secretas em áreas publicamente acessíveis, como GitHub ou código do lado do cliente.
+</Warning>

@@ -1,0 +1,56 @@
+---
+title: 'Editando uma pesquisa'
+description: 'Saiba como realizar alterações em pesquisas existentes e entenda as regras de integridade de dados.'
+---
+
+A edição de uma pesquisa permite ajustar o design, as perguntas e o comportamento do widget mesmo após o lançamento. No entanto, para garantir a consistência dos relatórios, existem algumas regras importantes.
+
+## Controle de Status
+
+Você pode alterar a disponibilidade da sua pesquisa a qualquer momento através do seletor de status:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/status-pesquisa.png"
+/>
+
+* **Rascunho (Draft):** A pesquisa não aparece no site. Use este modo para configurar perguntas e design sem afetar os usuários.
+* **Ativa (Active):** O widget é injetado no site e começa a coletar respostas imediatamente (respeitando os gatilhos configurados).
+* **Pausada (Paused):** A pesquisa para de aparecer no site, mas os dados já coletados permanecem intactos no dashboard.
+* **Arquivada (Archived):** A pesquisa é ocultada da lista principal e desativada. Use para encerrar ciclos de coleta permanentemente.
+
+## O que pode ser editado?
+
+Mesmo com a pesquisa ativa e recebendo respostas, você tem total liberdade para editar:
+
+* **Identidade Visual:** Cores, posição do widget e remoção de branding.
+* **Gatilhos e Regras:** Delay de exibição, regras de scroll e domínios autorizados.
+* **Textos de Interface:** Título do widget, rótulo do botão de envio e mensagens de sucesso.
+* **Rótulos das Perguntas:** Você pode corrigir erros ortográficos ou melhorar a redação das perguntas sem perder os dados.
+
+## Restrições e Integridade de Dados
+
+Para evitar que seus relatórios e análises de IA fiquem corrompidos, a Opiny aplica as seguintes restrições:
+
+### Exclusão de Campos
+Se uma pergunta já possui respostas coletadas, o sistema impedirá sua exclusão direta. Isso ocorre porque apagar a pergunta removeria o contexto histórico dos dados.
+
+> **Recomendação:** Se não deseja mais usar uma pergunta, você pode movê-la para uma etapa final desativada ou arquivar a pesquisa atual e criar uma nova (versão 2).
+
+### Alteração de Tipos de Campo
+Não é permitido alterar o tipo de uma pergunta (ex: mudar de NPS para Texto Livre) após a coleta da primeira resposta. Como a estrutura dos dados muda completamente, a análise estatística seria invalidada.
+
+### Opções de Escolha
+Ao editar listas de Escolha Única ou Múltipla, evite alterar drasticamente o significado de uma opção existente (ex: mudar "Sim" para "Talvez"). Isso fará com que as respostas antigas e novas sejam agrupadas sob o mesmo rótulo, distorcendo o resultado.
+
+## Aplicando as Alterações
+
+Diferente da criação, a maioria das edições de estilo e comportamento é aplicada em tempo real.
+
+<Warning>
+  **Aviso de Cache:** Devido ao cache do navegador dos usuários finais, as alterações de design podem levar alguns minutos para aparecer para quem já visualizou o widget recentemente.
+</Warning>
+
+<Tip>
+  Sempre utilize o **Live Preview** no editor antes de salvar para garantir que a experiência do usuário continue fluida após suas alterações.
+</Tip>

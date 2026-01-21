@@ -1,0 +1,36 @@
+---
+title: 'WordPress Plugin'
+description: 'Instale a Opiny no seu site WordPress.'
+icon: 'wordpress'
+---
+
+O plugin oficial da Opiny permite gerenciar múltiplas pesquisas e regras de exibição diretamente do painel do WordPress.
+
+## Instalação
+
+1. Baixe o arquivo `.zip` do plugin em nosso repositório do [GitHub](https://github.com/opinysaas/wordpress-plugin/blob/main/opiny/opiny.zip).
+2. No painel WordPress, vá em **Plugins > Adicionar Novo**.
+3. Clique em **Enviar Plugin** e selecione o arquivo.
+4. Ative o plugin.
+
+## Configuração
+
+Acesse o menu **Opiny** na barra lateral do WordPress.
+
+### Adicionar Pesquisa
+
+Clique em **+ Adicionar Pesquisa** e preencha os seguintes campos:
+
+* **Survey ID:** Cole o ID encontrado no painel da Opiny.
+* **Regra de Exibição:** Defina onde o widget deve aparecer com base na tabela abaixo.
+
+| Regra | Comportamento |
+| :--- | :--- |
+| `*` | Aparece em todas as páginas do site. |
+| `/` | Aparece apenas na página inicial (Home). |
+| `/blog/*` | Aparece em qualquer página que comece com `/blog/`. |
+| `/contato` | Aparece apenas na página exata `/contato`. |
+
+<Note>
+  O plugin injeta o script automaticamente no rodapé (`wp_footer`) de forma assíncrona para não afetar a performance do site.
+</Note>

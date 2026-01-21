@@ -1,0 +1,124 @@
+---
+title: 'Criando uma nova pesquisa'
+description: 'Aprenda a construir pesquisas personalizadas com diferentes tipos de campos e estilos.'
+---
+
+Criar uma pesquisa na Opiny é um processo intuitivo e dividido em etapas, permitindo que você configure desde a pergunta básica até o comportamento avançado do widget no seu site.
+
+## Configurações Iniciais
+
+Ao clicar em **"Nova Pesquisa"**, o primeiro passo é definir a identidade interna da sua pesquisa.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/nova-pesquisa.png"
+/>
+
+* **Nome da Pesquisa:** Título da pesquisa que será apresentado no modal e na página de Mnhas Pesquisas.
+* **Status Inicial:** Toda nova pesquisa inicia com o status de **Rascunho** (para testes).
+* **Título de Sucesso:** (Ex: "Recebemos sua mensagem!")
+* **Mensagem de Agradecimento:** Explique o que será feito com o feedback.
+* **Rótulo do Botão:** Altere o texto do botão de envio (Ex: "Enviar Avaliação" ou "Reportar Agora").
+
+## Estilização e Design
+
+O widget deve parecer parte integrante do seu produto. Na aba de **Aparência**, você controla cada detalhe visual:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/estilo-pesquisa.png"
+/>
+
+* **Cores da Marca:** Defina a cor primária (botões e destaques), cor de fundo do widget e cor do texto.
+* **Posicionamento:** Escolha entre os cantos da tela (Inferior Direito, Superior Esquerdo, etc.) ou o modo **Centro (Modal)** para maior impacto.
+* **Remover Branding:** Usuários **PRO** podem ocultar a marca "Powered by Opiny" para uma experiência white-label.
+
+## Comportamento e Gatilhos (Triggers)
+
+Configure quando e para quem a pesquisa deve aparecer:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/comportamento-pesquisa.png"
+/>
+
+* **Delay de Tempo:** Exiba após o usuário passar X segundos na página.
+* **Recorrência:** Defina se o usuário verá a pesquisa apenas uma vez, sempre, ou após um intervalo de dias (Cooldown).
+* **Scroll da Página:** Ative o widget quando o usuário chegar ao final.
+* **Iniciar minimizado:** Inicie o widget minimzado, podendo selecionar o ícone.
+* **Overlay:** Inicie o widget em destaque e escurecendo o fundo da página.
+
+<Info>
+  **Dica de Conversão:** Para pesquisas de satisfação geral, um delay de 5 a 10 segundos costuma performar melhor do que a exibição imediata.
+</Info>
+
+## Segurança
+
+Controle os domínios onde o widget pode aparecer.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/seguranca-pesquisa.png"
+/>
+
+<Warning> Recomendamos fortemente que seja configurado os domínios onde o widget será configurado para não correr o risco de alguém replicar o seu widget em outro lugar. </Warning>
+
+
+
+## Editor de Perguntas (Construtor)
+
+A Opiny oferece um construtor de perguntas versátil. Você pode criar pesquisas de uma única página ou fluxos complexos em várias etapas (Multi-step).
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/perguntas-pesquisa.png"
+/>
+
+### Tipos de Campo Disponíveis
+
+Cada campo foi desenhado para maximizar a taxa de resposta:
+
+<CardGroup cols={2}>
+  <Card title="NPS (Net Promoter Score)" icon="gauge">
+    Escala de 0 a 10 ou 0 a 5 para medir lealdade. Personalize os rótulos de "Mínimo" e "Máximo".
+  </Card>
+  <Card title="Avaliação" icon="star">
+    Ideal para satisfação rápida. Use emojis coloridos ou estrelas clássicas.
+  </Card>
+  <Card title="Texto Aberto" icon="font">
+    Para feedbacks qualitativos detalhados. Configure placeholders personalizados.
+  </Card>
+  <Card title="Reporte de Bug" icon="bug">
+    Exclusivo: Permite que o usuário descreva um erro e anexe uma captura de tela automática.
+  </Card>
+  <Card title="Escolha Única/Múltipla" icon="list-check">
+    Crie listas de opções para categorizar o feedback.
+  </Card>
+  <Card title="Dados" icon="database">
+    Campos validados (E-mail, Data, Número) para coletar informações específicas do lead.
+  </Card>
+</CardGroup>
+
+### Organização por Etapas (Wizard)
+
+Você pode agrupar perguntas em **"Etapas"**. O widget mostrará uma barra de navegação "Próximo" e "Voltar", reduzindo a carga cognitiva do usuário e aumentando a conversão.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/step-pesquisa.png"
+/>
+
+## Publicação e Prévia
+
+Enquanto você edita, o **Live Preview** à direita mostra exatamente como o widget ficará no seu site, permitindo testar a navegabilidade e as cores em tempo real.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/live-preview.png"
+/>
+
+Após salvar, a plataforma gerará o seu **Survey ID** único, pronto para ser usado em nossas integrações.
+
+<Card title="Próximo Passo: Instalação" icon="code" href="/integrations/react-sdk">
+  Saiba como colocar sua pesquisa no ar usando nossos SDKs e plugins.
+</Card>

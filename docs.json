@@ -1,122 +1,94 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Opiny Docs | Documentação oficial da Opiny",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4F46E5",
+    "light": "#818cf8",
+    "dark": "#312e81"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentação",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introdução",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "index"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Plataforma",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "platform/introduction",
+              "platform/new-account",
+              "platform/subscription-plans",
+              "platform/members-area",
+              "platform/surveys-overview",
+              "platform/new-survey",
+              "platform/survey-editor",
+              "platform/response-analysis"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Integrações & SDKs",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "integrations/webhooks",
+              "integrations/react-sdk",
+              "integrations/wordpress",
+              "integrations/html-script"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "IA & automação (MCP)",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "mcp/introduction",
+              "mcp/configuration"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Referência da API",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Documentação da API",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/authentication"
             ]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "Endpoints",
+            "openapi": "api-reference/openapi.yaml"
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/Opiny-light.png",
+    "dark": "/logo/Opiny-dark.png"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Ajuda",
+        "href": "mailto:contato@opiny.com.br"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Acessar plataforma",
+      "href": "https://app.opiny.com.br/login"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/opinysaas",
+      "instagram": "https://instagram.com/opiny.br"
     }
   }
 }

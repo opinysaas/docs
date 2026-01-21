@@ -1,0 +1,98 @@
+---
+title: 'Relatórios'
+description: 'Aprenda a analisar os dados de desempenho e insights de IA das suas pesquisas.'
+---
+
+A página de Relatórios oferece uma visão analítica profunda sobre como seus usuários interagem com seus widgets, permitindo que você tome decisões baseadas em dados reais e sentimentos analisados por Inteligência Artificial.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/relatorio.png"
+/>
+
+## Filtros de Dados
+
+Para uma análise precisa, você pode filtrar as informações exibidas no dashboard:
+
+* **Seleção de Pesquisa:** Escolha visualizar os dados de todas as pesquisas da organização simultaneamente ou foque em um formulário específico.
+* **Período de Data:** Defina um intervalo (Início e Fim) para auditar o desempenho em campanhas ou períodos específicos.
+
+## Indicadores de Desempenho (KPIs)
+
+No topo da página, apresentamos cinco métricas principais para leitura rápida:
+
+<CardGroup cols={3}>
+  <Card title="Volume Total" icon="users">
+    Quantidade de feedbacks recebidos no período selecionado.
+  </Card>
+  <Card title="Visualizações" icon="eye">
+    Total de vezes que o widget foi carregado para os usuários.
+  </Card>
+  <Card title="Taxa de Resposta" icon="chart-line">
+    A eficiência do seu widget (Respostas ÷ Visualizações).
+  </Card>
+  <Card title="Tempo Médio" icon="clock">
+    Quanto tempo o usuário leva para concluir a pesquisa.
+  </Card>
+  <Card title="NPS ou Satisfação" icon="star">
+    O índice de lealdade (NPS) ou a média de estrelas, dependendo da pesquisa.
+  </Card>
+</CardGroup>
+
+## Gráficos e Visualizações
+
+### Conversão Diária
+O gráfico de área compara diariamente o volume de **Visualizações** (linha pontilhada) com o de **Respostas** (área preenchida). Isso permite identificar picos de tráfego e flutuações na taxa de engajamento ao longo da semana.
+
+### Média de Sentimento (IA)
+Este componente exclusivo utiliza nossos modelos de linguagem para interpretar o tom das respostas abertas.
+
+* **Score de 0 a 100:** Uma nota quantitativa da qualidade do feedback.
+* **Classificação:** O sistema categoriza o sentimento geral como Crítico, Neutro, Bom ou Excelente.
+
+## Demografia e Contexto Técnico
+
+Entenda quem é o seu público e como ele acessa seu site:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/demograficos.png"
+/>
+
+* **Dispositivos:** Distribuição percentual entre usuários de Mobile e Desktop.
+* **Top Navegadores:** Lista dos browsers mais utilizados (Chrome, Safari, Firefox, etc.).
+* **Top Localizações:** Identificação geográfica (Cidade/País) baseada no IP dos respondentes.
+
+## Histórico de Respostas
+
+Abaixo dos gráficos, você encontrará uma tabela com as respostas mais recentes.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/respostas.png"
+/>
+
+* **Visualização Rápida:** Veja a data, o sentimento identificado pela IA e as primeiras respostas sem sair da página.
+* **Link de Detalhes:** Clique em "Detalhes" para abrir a pesquisa.
+
+## Exportação e Integração
+
+Seus dados são portáveis e podem ser levados para outras ferramentas de BI ou CRM:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/exportacao.png"
+/>
+
+<Steps>
+  <Step title="Exportação em CSV">
+    Baixe todos os dados brutos, incluindo metadados personalizados e colunas separadas para cada pergunta da sua pesquisa.
+  </Step>
+  <Step title="Acesso via API">
+    Usuários **PRO** podem acessar a [API pública](/integrations/api) para consumir estes mesmos dados de forma programática em JSON.
+  </Step>
+</Steps>
+
+<Note>
+  A exportação para CSV está disponível apenas para pesquisas individuais. Ao selecionar "Todas as Pesquisas", o botão de download ficará desabilitado para garantir a integridade da estrutura das colunas.
+</Note>

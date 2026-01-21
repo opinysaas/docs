@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: Opiny Public API
+  description: |-
+    API Pública da Opiny para integração de dados de pesquisas, respostas e análise de sentimento.
+    
+    Para utilizar esta API, você precisa de uma chave de API (Bearer Token) gerada no painel da sua organização.
+  version: 1.0.0
+servers:
+  - url: https://api-clients.opiny.com.br/v1
+    description: Servidor de Produção
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Survey:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "cmjt5c5d00003jr0wngf8kjga"
+        name:
+          type: string
+          example: "Feedback de Satisfação"
+        status:
+          type: string
+          enum: [active, draft, paused, archived]
+          example: "active"
+        created_at:
+          type: string
+          format: date-time
+        metrics:
+          type: object
+          properties:
+            views:
+              type: integer
+              example: 1250
+            responses:
+              type: integer
+              example: 450
+            sentiment_score:
+              type: integer
+              example: 85
+    Response:
+      type: object
+      properties:
+        id:
+          type: string
+        survey_id:
+          type: string
+        visitor_id:
+          type: string
+        sentiment:
+          type: string
+          enum: [POSITIVE, NEUTRAL, NEGATIVE]
+        metadata:
+          type: object
+          additionalProperties: true
+        answers:
+          type: array
+          items:
+            type: object
+            properties:
+              questionId:
+                type: string
+              value:
+                type: string
+        createdAt:
+          type: string
+          format: date-time
+
+security:
+  - bearerAuth: []
+
+paths:
+  /surveys:
+    get:
+      summary: Listar Pesquisas
+      description: Retorna uma lista paginada de todas as pesquisas vinculadas à sua organização.
+      tags:
+        - Pesquisas
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, draft, paused, archived]
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Survey'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      page:
+                        type: integer
+                      limit:
+                        type: integer
+
+  /surveys/{id}:
+    get:
+      summary: Obter Detalhes da Pesquisa
+      description: Retorna a estrutura completa de uma pesquisa específica, incluindo perguntas.
+      tags:
+        - Pesquisas
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        '404':
+          description: Pesquisa não encontrada
+
+  /responses:
+    get:
+      summary: Listar Respostas
+      description: Retorna os dados brutos das respostas coletadas.
+      tags:
+        - Respostas
+      parameters:
+        - name: survey_id
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          description: Formato YYYY-MM-DD
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          description: Formato YYYY-MM-DD
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Response'

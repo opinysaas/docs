@@ -1,0 +1,101 @@
+---
+title: 'Criar conta e onboarding'
+description: 'Saiba como dar os primeiros passos na Opiny e configurar a sua organização.'
+---
+
+Começar na Opiny é um processo rápido e intuitivo, desenhado para que possa começar a recolher feedbacks em menos de 2 minutos.
+
+## 1. Criar a sua Conta
+
+Para iniciar, acesse nossa página de registo. Não solicitamos cartão de crédito para começar no plano Free.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/cadastro.png"
+/>
+
+<Steps>
+  <Step title="Cadastro">
+    Vá para [app.opiny.com.br/register](https://app.opiny.com.br/register) ou clique no botão **"Cadastra-se"** no [nosso site](https://opiny.com.br?from=docs-new-account).
+  </Step>
+  <Step title="Preencha os seus Dados">
+    Coloque o seu nome completo, e-mail profissional e defina uma senha segura (mínimo de 6 caracteres).
+  </Step>
+  <Step title="Nome da Organização">
+    Dê um nome à sua empresa ou projeto. Este nome será utilizado para identificar a sua organização no painel e nos convites de equipe.
+  </Step>
+</Steps>
+
+## 2. Fluxo de Onboarding
+
+Após o primeiro login, será apresentado o assistente de configuração inicial (Onboarding). Este passo ajuda-nos a personalizar a sua experiência.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/onboarding.png"
+/>
+
+### Informações do Negócio
+
+Solicitaremos três informações básicas:
+
+* **Segmento:** Qual a área de atuação da sua empresa (SaaS, E-commerce, Serviços, etc.).
+* **Tamanho da Empresa:** Quantos colaboradores fazem parte da equipe.
+* **Site (Opcional):** O site da sua organização.
+
+## 3. Escolha do Plano
+
+O último passo do onboarding é a seleção do plano ideal para as suas necessidades atuais.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/planos.png"
+/>
+
+<CardGroup cols={3}>
+  <Card title="Free" icon="bolt">
+    Ideal para testes. Até 50 respostas/mês.
+  </Card>
+  <Card title="Intermediate" icon="rocket">
+    Para empresas em crescimento. 500 respostas.
+  </Card>
+  <Card title="Pro" icon="crown">
+    Para alta escala. 5.000 respostas, suporte prioritário, integrações (API, MCP e Webhooks) e remoção da marca no widget.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Pode começar com o plano Free e fazer o upgrade a qualquer momento conforme o seu volume de feedbacks aumentar.
+</Tip>
+
+## 4. Próximos Passos
+
+Uma vez concluído o onboarding, será redirecionado para o Dashboard principal. Recomendamos as seguintes ações imediatas:
+
+1. **Criar a sua primeira Pesquisa:** Acesse ao menu "Pesquisas" e escolha um modelo.
+2. **Instalar o SDK:** Copie o código de instalação e adicione-o ao seu site.
+3. **Convidar a sua equipe:** Adicione membros para ter acesso ao painel e colaborar em conjunto.
+
+<Card title="Guia de Instalação" icon="code" href="/integrations/react-sdk">
+  Aprenda a instalar o widget no seu site usando as nossas bibliotecas.
+</Card>
+
+## Dúvidas Frequentes
+
+<AccordionGroup>
+  <Accordion title="Preciso saber programar para usar a Opiny?">
+    Não. A instalação é feita copiando e colando um pequeno trecho de código (script) no cabeçalho do seu site. Funciona com WordPress, Wix, React, Next.js e qualquer outra plataforma web..
+  </Accordion>
+  <Accordion title="Como funciona o limite de respostas?">
+    Cada plano tem uma quota mensal (ex: 500 respostas no Intermediate). O ciclo renova-se a cada 30 dias. Se atingir o limite, o widget para de aparecer automaticamente, a menos que ative a opção de pacotes adicionais.
+  </Accordion>
+  <Accordion title="O que acontece se eu ultrapassar o limite do meu plano?">
+    Se a opção 'Recarga Automática' estiver desativada, o widget simplesmente fica oculto até o próximo mês. Se estiver ativada, cobramos automaticamente R$ 19,00 por cada bloco de 1.000 respostas extras, garantindo que nunca perde feedback.
+  </Accordion>
+  <Accordion title="A Opiny vai deixar o meu site lento?">
+   Absolutamente não. O nosso script é carregado de forma assíncrona (não bloqueia o carregamento do seu site) e pesa menos de 50kb. Os seus utilizadores nem notarão que estamos lá.
+  </Accordion>
+   <Accordion title="Posso cancelar a qualquer momento?">
+   Sim. Não há fidelização. Pode cancelar diretamente pelo painel e o seu acesso aos recursos pagos manter-se-á até ao fim do ciclo de faturação corrente.
+  </Accordion>
+</AccordionGroup>

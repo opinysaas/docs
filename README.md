@@ -1,43 +1,53 @@
-# Mintlify Starter Kit
+# Opiny Docs - Documentação Oficial
 
-Use the starter kit to get your docs deployed and ready to customize.
+Este repositório contém os ficheiros de origem da documentação oficial da **Opiny**, construída utilizando o ecossistema [Mintlify](https://mintlify.com/).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## 🚀 Estrutura do Projeto
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+A documentação está organizada para cobrir todas as frentes da plataforma:
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+* `introduction.mdx`: Visão geral e conceitos básicos.
+* `/platform`: Documentação completa de utilização da plataforma.
+* `/integrations`: Manuais de instalação para o SDK React (NPM), Plugin WordPress e Script HTML.
+* `/mcp`: Configuração do Servidor MCP para integração com o Claude Desktop e outros agentes de IA.
+* `/api-reference`: Guia de autenticação e documentação técnica dos endpoints de Pesquisas e Respostas.
 
-## Development
+## 🛠️ Desenvolvimento Local
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+Para pré-visualizar as alterações localmente antes de as enviar para produção, siga estes passos:
 
-```
-npm i -g mint
-```
+### 1. Instale a CLI do Mintlify
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
+```bash
+npm i -g mintlify
 ```
 
-View your local preview at `http://localhost:3000`.
+### 2. Inicie o servidor de desenvolvimento
 
-## Publishing changes
+Navegue até à pasta raiz do projeto e execute:
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+```bash
+mintlify dev
+```
 
-## Need help?
+A documentação ficará disponível em http://localhost:3000. O Mintlify atualizará a página automaticamente sempre que gravar um ficheiro.
 
-### Troubleshooting
+## ⚙️ Configuração
+O ficheiro central de configuração é o mint.json. Nele pode ajustar:
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+- A estrutura de navegação lateral.
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- A paleta de cores (Primária, Light e Dark).
+
+- Os logótipos e favicons.
+
+- As definições da API (Base URL e método de autenticação).
+
+## 📄 Notas de Edição
+Todos os ficheiros de conteúdo devem utilizar a extensão .mdx.
+
+Utilize os componentes do Mintlify como <CardGroup />, <Tip /> e <ParamField /> para manter a consistência visual.
+
+Garanta que qualquer alteração na estrutura de ficheiros seja refletida no array de navegação do mint.json.
+
+***Opiny***

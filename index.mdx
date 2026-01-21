@@ -1,97 +1,37 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: 'Comece aqui'
+description: 'Documentação oficial da Opiny: SDKs, API e Ferramentas.'
+icon: 'Rocket'
 ---
 
-## Setting up
+Bem-vindo à documentação da Opiny. Nossa plataforma permite coletar feedbacks de usuários, analisar sentimentos com IA e integrar dados em qualquer lugar.
 
-Get your documentation site up and running in minutes.
-
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
-
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+ <Card title="Plataforma" icon="laptop-mobile" href="/platform/introduction">
+    Domine a plataforma do começo ao fim. Veja como criar pesquisas, customizar e utilizar em sua solução.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="SDK React" icon="react" href="/integrations/react-sdk">
+    Integre widgets em aplicações Next.js e React em segundos.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="WordPress Plugin" icon="wordpress" href="/integrations/wordpress">
+    Adicione pesquisas ao seu site WordPress sem código.
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="Script HTML" icon="code" href="/integrations/html-script.mdx">
+    A maneira mais simples de integrar a Opiny em qualquer site.
   </Card>
-</Columns>
+  <Card title="API" icon="code-fork" href="/api-reference/introduction">
+    Acesse dados brutos e integre com seu CRM ou BI.
+  </Card>
+  <Card title="MCP Server" icon="robot" href="/mcp/introduction">
+    Conecte seus dados ao Claude e outros assistentes de IA.
+  </Card>
+</CardGroup>
 
-## Create beautiful pages
+## Conceitos básicos
 
-Everything you need to create world-class documentation.
+Aqui estão os principais termos que você encontrará ao usar a plataforma:
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+* **Survey (Pesquisa):** O formulário configurado no painel. Possui um ID único (UUID).
+* **Widget:** A interface visual que aparece para o usuário final em seu site ou app.
+* **Response (Resposta):** Os dados coletados de uma submissão de usuário.
+* **Sentiment Score:** Nota de 0 a 100 gerada pela nossa IA baseada no tom do texto do usuário.

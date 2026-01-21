@@ -1,0 +1,60 @@
+---
+title: 'Configurar MCP'
+description: 'Como conectar o MCP Server da Opiny em seus agentes de LLM'
+icon: 'gear'
+---
+
+Usaremos o Claude Desktop como exemplo. Para isso, você precisa editar o arquivo de configuração `claude_desktop_config.json`.
+
+## Opção A: Conexão remota (Recomendado)
+
+Se você quer utilizar o servidor remoto da Opiny, adicione a seguinte configuração:
+
+```json claude_desktop_config.json
+{
+  "mcpServers": {
+    "opiny": {
+      "url": "[https://ai.opiny.com.br/mcp](https://ai.opiny.com.br/mcp)",
+      "headers": {
+        "x-api-key": "SUA_CHAVE_OPINY_AQUI"
+      }
+    }
+  }
+}
+```
+
+## Opção B: Rodando Localmente (Docker)
+Se você prefere rodar o servidor na sua máquina, siga os passos abaixo.
+
+1. Inicie o container
+Execute o seguinte comando no seu terminal para baixar e montar nossa imagem do Docker:
+
+```Bash
+docker build -t ghcr.io/opinysaas/mcp-opiny:latest .
+```
+
+2. Configure o Claude
+Adicione a configuração local ao seu arquivo JSON:
+
+```json claude_desktop_config.json
+{
+  "mcpServers": {
+    "opiny": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "OPINY_API_KEY=SUA_CHAVE_OPINY_AQUI",
+        "ghcr.io/opinysaas/mcp-opiny:latest",
+        "node",
+        "index.js",
+        "--stdio"
+      ]
+    }
+  }
+}
+```
+
+<Warning> Nunca compartilhe sua OPINY_API_KEY. Ela dá acesso de leitura a todos os dados da sua organização. </Warning>

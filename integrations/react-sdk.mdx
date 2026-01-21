@@ -1,0 +1,86 @@
+---
+title: 'React & Next.js SDK'
+description: 'Biblioteca oficial para aplicações React.'
+icon: 'react'
+---
+
+O pacote `opiny-react` facilita a injeção do widget, controle de rotas e envio de metadados.
+
+## Instalação
+
+Via npm:
+<CodeGroup>
+```bash npm
+npm install opiny-sdk-react
+```
+</CodeGroup>
+
+Via yarn:
+<CodeGroup>
+```bash yarn
+yarn add opiny-sdk-react
+```
+</CodeGroup>
+
+Via pnpm:
+<CodeGroup>
+```bash pnpm
+pnpm add opiny-sdk-react
+```
+</CodeGroup>
+
+## Uso básico
+Adicione o componente no seu arquivo de layout principal (ex: app/layout.tsx no Next.js).
+
+<CodeGroup>
+```typescript TypeScript
+
+import { Opiny } from 'opiny-sdk-react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="pt-BR">
+      <body>
+        {children}
+        <Opiny surveyId="SEU_ID_DA_PESQUISA" />
+      </body>
+    </html>
+  );
+}
+```
+</CodeGroup>
+
+## Configuração avançada
+Você pode controlar onde o widget aparece e enviar dados do usuário logado.
+
+<CodeGroup>
+```typescript TypeScript
+
+<Opiny 
+  surveyId="SEU_ID_DA_PESQUISA"
+  
+  // Dados do usuário (opcional)
+  metadata={{
+    userId: "123",
+    plan: "pro",
+    name: "João Silva"
+  }}
+
+  // Mostrar apenas nestas rotas
+  includedPaths={['/dashboard/*', '/pricing']}
+
+  // Esconder nestas rotas (prioridade alta)
+  excludedPaths={['/login', '/register']}
+/>
+```
+</CodeGroup>
+
+## Regra de exibição
+Defina onde o widget deve aparecer com base na tabela abaixo.
+
+| Regra | Comportamento |
+| :--- | :--- |
+| `*` | Aparece em todas as páginas do site. |
+| `/` | Aparece apenas na página inicial (Home). |
+| `/blog/*` | Aparece em qualquer página que comece com `/blog/`. |
+| `/contato` | Aparece apenas na página exata `/contato`. |
