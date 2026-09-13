@@ -29,13 +29,16 @@
               "platform/surveys-overview",
               "platform/new-survey",
               "platform/survey-editor",
-              "platform/response-analysis"
+              "platform/response-analysis",
+              "platform/widget-experiments",
+              "platform/public-roadmap"
             ]
           },
           {
             "group": "Integrações & SDKs",
             "pages": [
               "integrations/webhooks",
+              "integrations/oauth-connectors",
               "integrations/react-sdk",
               "integrations/wordpress",
               "integrations/html-script"

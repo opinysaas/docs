@@ -1,0 +1,23 @@
+---
+title: 'Experimentos A/B no widget'
+description: 'Compare chamadas e estilos do widget com distribuição estável e leitura de conversão.'
+---
+
+Os experimentos A/B da Opiny permitem testar uma segunda chamada do launcher sem duplicar pesquisas ou alterar a instalação do SDK.
+
+## Criar um experimento
+
+No **Widget Studio**, abra **Comportamento** e ative **Experimento A/B**. Defina:
+
+* o nome do experimento;
+* a porcentagem de visitantes na variante B;
+* o texto alternativo do launcher;
+* a cor principal alternativa.
+
+Cada visitante permanece na mesma variante entre sessões. A distribuição considera o visitante, a pesquisa e o nome do experimento; alterar o nome inicia uma nova atribuição.
+
+## Ler os resultados
+
+Abra a pesquisa e acesse **Performance > Experimento A/B**. A comparação mostra aberturas, respostas, fechamentos e conversão por variante.
+
+<Info>O SDK HTML e o pacote React usam a mesma configuração. Não é necessário modificar o snippet existente.</Info>

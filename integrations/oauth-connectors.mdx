@@ -1,0 +1,33 @@
+---
+title: 'Linear, Jira e HubSpot'
+description: 'Conectores OAuth com credenciais isoladas por organização.'
+icon: 'key'
+---
+
+Cada organização usa sua própria aplicação OAuth para conectar Linear, Jira ou HubSpot. A Opiny não compartilha um Client ID ou Client Secret global entre clientes.
+
+## Como conectar
+
+1. Acesse **Dashboard → Integrações** e escolha o provedor.
+2. Copie a URL de callback exibida pela Opiny.
+3. Crie uma aplicação OAuth na conta corporativa do provedor e cadastre exatamente essa callback.
+4. Cole o Client ID e o Client Secret no formulário da Opiny.
+5. Clique em **Autorizar** e conclua o consentimento no provedor.
+6. Use **Testar agora** para validar a criação de uma issue ou ticket.
+
+## Segurança e isolamento
+
+- Apenas owners e administradores podem cadastrar ou substituir credenciais.
+- O Client Secret é enviado no corpo autenticado da requisição, nunca na query string.
+- Credenciais e tokens são protegidos com AES-256-GCM antes de chegar ao banco.
+- A tentativa de autorização expira em 10 minutos e é vinculada ao usuário, organização e provedor.
+- A integração atual só é substituída depois que o callback OAuth termina com sucesso.
+- Após o callback, a cópia temporária das credenciais é sobrescrita; a configuração ativa continua criptografada na integração.
+
+<Note>
+O Google Sheets usa a aplicação OAuth oficial da Opiny e não solicita Client ID ou Client Secret da organização.
+</Note>
+
+## Renovação dos tokens
+
+Quando o provedor retorna um refresh token, a Opiny renova o acesso usando as credenciais da própria organização. Se a aplicação for removida ou o segredo for rotacionado no provedor, conecte novamente pelo painel com o novo Client Secret.

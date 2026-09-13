@@ -97,8 +97,8 @@ if (`sha256=${expectedSignature}` === signature) {
 ## Melhores Práticas
 - Status 200 OK: Seu servidor deve responder com um status HTTP 200 ou 204 rapidamente. Se a resposta demorar mais de 10 segundos, consideraremos como falha.
 
-- Retentativas (Retries): Caso seu servidor falhe, a Opiny tentará reenviar o webhook até 5 vezes com um intervalo crescente (backoff exponencial).
+- Entrega: atualmente o envio é feito uma vez, com timeout de 10 segundos. Retorne `200` ou `204` e use o identificador do evento para manter o processamento idempotente.
 
 - Idempotência: Como webhooks podem ser reenviados em caso de falha na rede, certifique-se de que seu sistema consegue lidar com o recebimento do mesmo id de resposta mais de uma vez.
 
-<Warning> Se o seu endpoint falhar consecutivamente por mais de 24 horas, o Webhook será desativado automaticamente e você precisará reativá-lo manualmente no painel. </Warning>
+<Warning>Webhooks exigem uma URL HTTPS pública. Endereços locais, redes privadas e redirecionamentos são bloqueados por segurança.</Warning>

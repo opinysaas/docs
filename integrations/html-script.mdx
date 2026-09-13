@@ -15,7 +15,7 @@ Copie e cole o código abaixo antes do fechamento da tag `</body>` no seu arquiv
 <script>
   (function() {
     var s = document.createElement('script');
-    s.src = "https:/opiny.com.br/sdk/opiny.js";
+    s.src = "https://opiny.com.br/sdk/opiny.js";
     s.onload = function() { 
       window.Opiny.init({ surveyId: "SEU_ID_DA_PESQUISA" }); 
     };
@@ -34,7 +34,7 @@ Você pode identificar o usuário ou enviar informações contextuais (como o pl
 <script>
   (function() {
     var s = document.createElement('script');
-    s.src = "https:/opiny.com.br/sdk/opiny.js";
+    s.src = "https://opiny.com.br/sdk/opiny.js";
     s.onload = function() { 
       window.Opiny.init({ 
         surveyId: "SEU_ID_DA_PESQUISA",
@@ -50,6 +50,69 @@ Você pode identificar o usuário ou enviar informações contextuais (como o pl
 </script>
 ```
 </CodeGroup>
+
+## Identificação e contexto
+
+O SDK v5 separa a identidade do usuário do contexto da experiência. Esses métodos são opcionais e o formato anterior com `metadata` continua funcionando.
+
+```javascript
+Opiny.identify("user-123", {
+  plan: "pro",
+  company: "Acme",
+  role: "admin"
+});
+
+Opiny.setContext({
+  productVersion: "2.4.0",
+  featureFlags: ["new-dashboard"]
+});
+
+Opiny.init({ surveyId: "SEU_ID_DA_PESQUISA" });
+```
+
+## Eventos e controle manual
+
+Use `track` para acionar pesquisas configuradas com um evento de produto. `show` e `hide` permitem integrar o widget a qualquer ação da interface.
+
+```javascript
+Opiny.track("checkout_completed", { orderValue: 299 });
+Opiny.show("SEU_ID_DA_PESQUISA");
+Opiny.hide("SEU_ID_DA_PESQUISA");
+Opiny.destroy("SEU_ID_DA_PESQUISA"); // remove a instância e seus listeners
+```
+
+Use `destroy` ao desmontar uma integração manual em aplicações SPA. O componente React oficial já faz essa limpeza automaticamente nas trocas de rota e na desmontagem.
+
+Também são emitidos os eventos de navegador `opiny:shown`, `opiny:submitted` e `opiny:closed`.
+
+```javascript
+window.addEventListener("opiny:submitted", function (event) {
+  console.log(event.detail.surveyId);
+});
+```
+
+Para conferir por que uma experiência não apareceu, use `Opiny.debug()` no console do navegador. O retorno mostra as campanhas carregadas e motivos como página excluída, janela de publicação, audiência, cooldown, limite da sessão ou conflito de prioridade.
+
+```javascript
+console.table(Opiny.debug().instances);
+```
+
+## Orquestração de campanhas
+
+No painel, cada pesquisa pode definir uma janela de publicação, páginas elegíveis e excluídas, amostragem, número mínimo de sessões e limite de visualizações por sessão. Quando duas campanhas tentam abrir ao mesmo tempo, a de maior prioridade é exibida. Experiências inline podem coexistir com widgets flutuantes.
+
+## Telemetria da jornada
+
+O SDK registra eventos agregados de abertura, etapa visitada, conclusão e fechamento para alimentar o funil e a análise por gatilho. Essa telemetria não envia identificador do visitante, URL da página ou metadados do produto. Os dados fornecidos explicitamente em `identify`, `setContext` ou `metadata` continuam sendo enviados somente junto de uma resposta concluída.
+
+## Formatos disponíveis
+
+- **Popover:** card flutuante compatível com o widget original.
+- **Modal:** experiência central para pesquisas prioritárias.
+- **Bottom sheet:** painel inferior responsivo.
+- **Inline:** incorpora a pesquisa no seletor CSS configurado.
+
+O launcher pode ser exibido como ícone, ícone com texto, texto, pill ou aba lateral, nos tamanhos pequeno, médio e grande.
 
 ## Considerações técnicas
 

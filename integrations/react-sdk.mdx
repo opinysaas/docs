@@ -4,7 +4,7 @@ description: 'Biblioteca oficial para aplicações React.'
 icon: 'react'
 ---
 
-O pacote `opiny-react` facilita a injeção do widget, controle de rotas e envio de metadados.
+O pacote `opiny-sdk-react` facilita a injeção do widget, controle de rotas e envio de metadados.
 
 ## Instalação
 
@@ -84,3 +84,5 @@ Defina onde o widget deve aparecer com base na tabela abaixo.
 | `/` | Aparece apenas na página inicial (Home). |
 | `/blog/*` | Aparece em qualquer página que comece com `/blog/`. |
 | `/contato` | Aparece apenas na página exata `/contato`. |
+
+O SDK observa `pushState`, `replaceState` e `popstate`. Ao sair de uma rota elegível ou desmontar o componente, a instância e seus listeners são removidos automaticamente, evitando widgets duplicados em sessões longas de aplicações SPA.

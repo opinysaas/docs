@@ -14,7 +14,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      bearerFormat: JWT
+      bearerFormat: API Key
   schemas:
     Survey:
       type: object
@@ -27,8 +27,8 @@ components:
           example: "Feedback de Satisfação"
         status:
           type: string
-          enum: [active, draft, paused, archived]
-          example: "active"
+          enum: [ACTIVE, DRAFT, PAUSED, ARCHIVED]
+          example: "ACTIVE"
         created_at:
           type: string
           format: date-time
@@ -67,7 +67,14 @@ components:
               questionId:
                 type: string
               value:
-                type: string
+                description: Valor textual, numérico, múltipla escolha ou objeto de bug report.
+                oneOf:
+                  - type: string
+                  - type: number
+                  - type: array
+                    items: {}
+                  - type: object
+                    additionalProperties: true
         createdAt:
           type: string
           format: date-time
