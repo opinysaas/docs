@@ -9,14 +9,18 @@ loja física, pós-atendimento, WhatsApp, e para qualquer cliente que não conse
 
 ## Publicar a pesquisa em link
 
-No painel, abra a pesquisa, vá em **Segurança e distribuição** e ligue **Publicar em link próprio**.
-Se você não escolher um endereço, geramos um a partir do nome da pesquisa.
+No painel, abra a pesquisa, vá em **Segurança** e ligue **Publicar em link próprio**. Se você não
+escolher um endereço, geramos um a partir do nome da pesquisa.
+
+O endereço tem dois segmentos: o primeiro identifica a organização e o segundo a pesquisa. O da
+organização é criado junto com a primeira publicação, a partir do nome dela.
 
 ```
-https://opiny.com.br/s/SEU-ENDERECO
+https://opiny.com.br/s/SUA-ORGANIZACAO/SUA-PESQUISA
 ```
 
-Na mesma seção ficam o botão de copiar e o **QR code em SVG**, para imprimir em qualquer tamanho.
+O botão de copiar fica nessa mesma seção. O **QR code em SVG** e o gerador de HTML para e-mail ficam
+na aba **Instalação** da pesquisa, junto dos demais códigos de distribuição.
 
 <Note>
 Desligar a publicação **preserva o endereço**. Um QR code já impresso ou um link já enviado continuam
@@ -27,7 +31,8 @@ existindo — quem abrir vê que a pesquisa não está disponível, em vez de ca
 
 Você monta o e-mail na sua própria ferramenta. A Opiny não dispara nada: ela gera o HTML que você cola.
 
-No painel, em **Código para o seu e-mail**, escolha a pergunta e copie o HTML. Quem clicar numa nota
+No painel, na aba **Instalação** da pesquisa, em **Código para o seu e-mail**, escolha a pergunta e
+copie o HTML. Quem clicar numa nota
 cai na pesquisa **com aquela nota já marcada** e só confirma o envio.
 
 ### Por que o clique não grava sozinho
@@ -53,7 +58,7 @@ pergunta de acompanhamento já aparecendo pela exibição condicional.
 `q` e `v` são lidos **em pares, na ordem em que aparecem**. Para marcar duas perguntas:
 
 ```
-https://opiny.com.br/s/pos-atendimento?q=PERGUNTA_1&v=9&q=PERGUNTA_2&v=App
+https://opiny.com.br/s/sua-empresa/pos-atendimento?q=PERGUNTA_1&v=9&q=PERGUNTA_2&v=App
 ```
 
 ### Identificar quem respondeu
@@ -62,15 +67,15 @@ Use a etiqueta de substituição da sua ferramenta de e-mail em `uid`:
 
 <CodeGroup>
 ```html Mailchimp
-<a href="https://opiny.com.br/s/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid=*|EMAIL|*">9</a>
+<a href="https://opiny.com.br/s/sua-empresa/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid=*|EMAIL|*">9</a>
 ```
 
 ```html RD Station
-<a href="https://opiny.com.br/s/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid=@|EMAIL|@">9</a>
+<a href="https://opiny.com.br/s/sua-empresa/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid=@|EMAIL|@">9</a>
 ```
 
 ```html Transacional
-<a href="https://opiny.com.br/s/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid={{contact.id}}">9</a>
+<a href="https://opiny.com.br/s/sua-empresa/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid={{contact.id}}">9</a>
 ```
 </CodeGroup>
 
@@ -100,6 +105,7 @@ não casa com nenhum botão e a pergunta abre sem resposta marcada.
 
 ## Limites
 
+- O endereço precisa dos **dois segmentos**: só o da pesquisa não resolve.
 - A pesquisa precisa estar **ativa** e com o link **publicado**.
 - O limite de respostas do plano vale igual, venha a resposta do widget ou do link.
 - A lista de domínios autorizados **não se aplica** ao link: ela existe para o script incorporado.
