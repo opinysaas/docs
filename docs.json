@@ -37,6 +37,7 @@
           {
             "group": "Integrações & SDKs",
             "pages": [
+              "integrations/email-link",
               "integrations/webhooks",
               "integrations/oauth-connectors",
               "integrations/react-sdk",

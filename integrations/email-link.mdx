@@ -1,0 +1,106 @@
+---
+title: 'Link e e-mail'
+description: 'Colete respostas fora do seu site: link próprio, QR code e nota clicável dentro do e-mail.'
+icon: 'link'
+---
+
+Toda pesquisa pode ganhar um endereço próprio, sem depender do script no seu site. É o caminho para
+loja física, pós-atendimento, WhatsApp, e para qualquer cliente que não consegue instalar o widget.
+
+## Publicar a pesquisa em link
+
+No painel, abra a pesquisa, vá em **Segurança e distribuição** e ligue **Publicar em link próprio**.
+Se você não escolher um endereço, geramos um a partir do nome da pesquisa.
+
+```
+https://opiny.com.br/s/SEU-ENDERECO
+```
+
+Na mesma seção ficam o botão de copiar e o **QR code em SVG**, para imprimir em qualquer tamanho.
+
+<Note>
+Desligar a publicação **preserva o endereço**. Um QR code já impresso ou um link já enviado continuam
+existindo — quem abrir vê que a pesquisa não está disponível, em vez de cair num endereço morto.
+</Note>
+
+## Nota clicável dentro do e-mail
+
+Você monta o e-mail na sua própria ferramenta. A Opiny não dispara nada: ela gera o HTML que você cola.
+
+No painel, em **Código para o seu e-mail**, escolha a pergunta e copie o HTML. Quem clicar numa nota
+cai na pesquisa **com aquela nota já marcada** e só confirma o envio.
+
+### Por que o clique não grava sozinho
+
+Gmail, Outlook e scanners de segurança corporativa **seguem os links da mensagem antes do destinatário
+abrir**. Se o clique gravasse a resposta, sua base encheria de notas de robô.
+
+Por isso o link só abre a pesquisa com a resposta pré-selecionada, e a gravação acontece quando a
+pessoa confirma na página — o que um scanner não faz, porque ele não executa JavaScript.
+
+O segundo clique também é onde está o valor: quem acabou de dar nota baixa está na tela, com a
+pergunta de acompanhamento já aparecendo pela exibição condicional.
+
+## Formato do link
+
+| Parâmetro | Repetível | O que faz |
+| --- | --- | --- |
+| `q` | sim | Id da pergunta a marcar. |
+| `v` | sim | Valor a marcar nessa pergunta. |
+| `uid` | não | Identificador do respondente no seu sistema. Volta nos metadados da resposta. |
+| qualquer outro | — | Vira metadado da resposta, até 20 parâmetros. |
+
+`q` e `v` são lidos **em pares, na ordem em que aparecem**. Para marcar duas perguntas:
+
+```
+https://opiny.com.br/s/pos-atendimento?q=PERGUNTA_1&v=9&q=PERGUNTA_2&v=App
+```
+
+### Identificar quem respondeu
+
+Use a etiqueta de substituição da sua ferramenta de e-mail em `uid`:
+
+<CodeGroup>
+```html Mailchimp
+<a href="https://opiny.com.br/s/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid=*|EMAIL|*">9</a>
+```
+
+```html RD Station
+<a href="https://opiny.com.br/s/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid=@|EMAIL|@">9</a>
+```
+
+```html Transacional
+<a href="https://opiny.com.br/s/pos-atendimento?q=PERGUNTA&amp;v=9&amp;uid={{contact.id}}">9</a>
+```
+</CodeGroup>
+
+<Warning>
+Dentro de HTML, separe os parâmetros com `&amp;` e não com `&` solto. O navegador lê `&amp;` como `&`;
+um `&` cru pode ser interpretado como início de entidade e quebrar o link em alguns clientes de e-mail.
+</Warning>
+
+## Valores aceitos por tipo de pergunta
+
+O valor em `v` precisa ser exatamente um dos que o widget envia. O gerador do painel já monta certo;
+esta tabela serve para quem monta o link na mão.
+
+| Tipo | Valores |
+| --- | --- |
+| NPS | `0` até a escala configurada (padrão `10`) |
+| CSAT, CES | `1` a `5` |
+| Avaliação por estrelas ou carinhas | `1` a `5` |
+| Reação | `positive`, `negative` |
+| Escolha única ou múltipla | o texto exato da opção |
+| Texto, e-mail, data, número | o próprio conteúdo |
+
+<Note>
+CSAT e CES são sempre de 1 a 5, mesmo que o cadastro mostre outra escala. Um valor fora dessa faixa
+não casa com nenhum botão e a pergunta abre sem resposta marcada.
+</Note>
+
+## Limites
+
+- A pesquisa precisa estar **ativa** e com o link **publicado**.
+- O limite de respostas do plano vale igual, venha a resposta do widget ou do link.
+- A lista de domínios autorizados **não se aplica** ao link: ela existe para o script incorporado.
+- A regra de frequência e a amostragem também não se aplicam. Quem abriu o link escolheu responder.
